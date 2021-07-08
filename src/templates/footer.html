@@ -1,0 +1,72 @@
+{% load static %}
+
+<footer class="col-lg-12 text-center p-4 derechos" style="background-color: #33383c; color: #FFF;" >
+ <div class="container">
+   <div class="row">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <br><br>
+                <div>
+                    <a href="{% url 'home' %}">
+                        <img class="img-fluid" src="{% static 'images/Logo.png' %}" style="max-width: 200px;"/>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-sm-6 col-s-12">
+                <ul class="menu">
+                     <span>Menú</span>    
+                     <li >
+                        <a href="/">INICIO</a>
+                      </li>
+                      <li>
+                         <a href="{% url 'cart:product-list' %}">TIENDA</a>
+                      </li>
+                      <li>
+                        <a href="#">NOSOTROS</a>
+                      </li>
+                      <li>
+                         <a href="{% url 'contact' %}">CONTACTOS</a>
+                      </li>
+                 </ul>
+            </div>
+       
+            <div class="col-md-4 col-sm-6 col-s-12">
+              <ul class="address">
+                <span>Contáctenos</span>       
+                <li>
+                   <i class="icon ion-md-home"></i>
+                   Mz A. A1 Lote. 5 A.v. Los Industriales-Cieneguilla
+                </li>
+                <li>
+                   <i class="icon ion-md-call"></i>
+                   01-4790278 Perú-Lima 
+                </li> 
+                <li>
+                   <i class="icon ion-md-mail"></i>
+                   jardines_paisajes_bosques@hotmail.com
+                </li> 
+               </ul>
+            </div>
+        </div> 
+    </div >
+</footer>
+<div class="col-lg-12 text-center p-4 derechos" style="background-color: #33383c; color: #FFF;">
+    <p>
+        Copyright &copy;
+        <script>document.write(new Date().getFullYear());</script>
+        Jardines, Paisajes y Bosques</i>
+    </p>
+</div>
+{% comment %} <footer class="site-footer border-top">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p>
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script>
+                    Jardines, Paisajes y Bosques</i>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer> {% endcomment %}

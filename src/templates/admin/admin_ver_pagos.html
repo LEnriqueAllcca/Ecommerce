@@ -1,0 +1,58 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Pagos</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">pagos</li>
+            </ol>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Pagos realizados realizadas
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Orden</th>
+                            <th scope="col">Método de Pago</th>
+                            <th scope="col">marca de tiempo</th>
+                            <th scope="col">Exitoso</th>
+                            <th scope="col">monto</th>
+                            <th scope="col">respuesta cruda</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in object_list %}
+                            <tr>
+                                <td>{{ p.id }}</td>
+                                <td> {{ p.order }}</td>
+                                <td> {{ p.payment_method }}</td>
+                                <td>{{ p.timestamp }}</td>
+                                <td>{{ p.succesful }}</td>
+                            <td>{{ p.amount  }}</td>
+                            <td>{{ p.raw_response }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

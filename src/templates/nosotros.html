@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- START THE FEATURETTES -->
+<div class="container">
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7 ">
+    <h2 class="featurette-heading"><span class="text-black ">¿Quiénes somos?</span></h2>
+    <p class="lead">Somos una empresa fundada el 22 de enero del 2009 bajo la dirección del Sr. 
+    Rafael Poma Cordova y el Sr. Luis Allcca Alhuay con la finalidad de brindar la mejor expericiencia
+     y resultado en los servicios que nuestros clientes solicitan.</p>
+  </div>
+  <div class="col-md-5 ">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static 'images/nosotros.jpeg' %}" >
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><span class="text-black">¿Cuál es nuestra visión?</span></h2>
+    <p class="lead">Incrementar la competitividad en el mercado, obteniendo así una posición reconocida
+     dentro del sector en cuestión y, de esta manera, aumentar el público objetivo.</p>
+    <h2 class="featurette-heading"><span class="text-black">¿Cuál es nuestra misión?</span></h2>
+    <p class="lead">Brindar un buen servicio en las áreas verdes.</p>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static 'images/nosotros1.jpeg' %}"  >
+  </div>
+</div>
+
+<hr class="featurette-divider">
+</div>
+
+<!-- /END THE FEATURETTES -->
+
+{% endblock content %}

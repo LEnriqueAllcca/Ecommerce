@@ -1,0 +1,113 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Dashboard</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Total de clientes:  {{ customercount }}</div>
+
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Total de Productos:   {{ productocount }}</div>
+                        <div class="text-center">
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">Success Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Danger Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Ordenes realizadas
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">ID orden</th>
+                            <th scope="col">fecha Creacion</th>
+                            <th scope="col">Movil Cliente</th>
+                            <th scope="col">Dirección de envio</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for product,ordenes, order in data %}
+                            <tr>
+
+                                {% for c in ordenes %}
+                                    <td>{{ order.id }}</td>
+                                    <td> {{ c.id }}</td>
+                                    <td> {{ c.start_date }}</td>
+                                    <td>{{ c.get_name }}</td>
+                                    <td>{{ c.get_direccion }}</td>
+
+
+                                {% endfor %}
+                                {% for p in product %}
+                                    <td> {{ p.title }}</td>
+                                    <td> {{ p.price }}</td>
+                                    <td>
+                                        <img src="{{ p.image.url }}" class="img-fluid"  height="60px"
+                                             width="60px"></a>
+                                        </td>
+                                    <td> Opcion</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

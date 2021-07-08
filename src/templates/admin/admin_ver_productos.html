@@ -1,0 +1,75 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Productos</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tabla productos</li>
+            </ol>
+            <div class="row">
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Productos en el sistema
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">slug</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Creación</th>
+                            <th scope="col">Actualización</th>
+                            <th scope="col">Activación</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">opción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in object_list %}
+                            <tr>
+                                <td>{{ p.id }}</td>
+                                <td>{{ p.title }}</td>
+                                <td><img src="{{ p.image.url }}" class="img-fluid" height="60px"
+                                         width="60px"></td>
+                                <td>{{ p.slug }}</td>
+                                <td>{{ p.description }}</td>
+                                <td>{{ p.price }}</td>
+                                <td>{{ p.created }}</td>
+                                <td>{{ p.update }}</td>
+                                <td>{{ p.active }}</td>
+                                <td>{{ p.stock }}</td>
+
+                                <td><a class="btn btn-outline-primary" href="{% url 'admin_actualizar_productos' p.id %}"><i
+                                        class="fas fa-sync"></i></a>
+                                    <a href="{% url 'admin_eliminar_productos' p.id %}" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></a>
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

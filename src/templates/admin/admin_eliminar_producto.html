@@ -1,0 +1,31 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4 text-center">Elimiar Producto</h1>
+
+
+            <div class="card mb-4">
+
+                <div class="card-body">
+
+                    <form method="post">{% csrf_token %}
+                        <p>Estas seguro de eliminar este producto "{{ object }}"?</p>
+                        <input type="submit" value="Confirmar" class="btn btn-danger">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

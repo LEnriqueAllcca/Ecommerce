@@ -1,0 +1,42 @@
+{% extends 'admin/admin_base.html' %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4 pt-4">
+            <div class="card mb-4 ">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Registro de Usuario administradores
+                </div>
+                <div class="card-body">
+                    <form class="box" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group pt-3">{% render_field userForm.first_name class="form-control" placeholder="Ingrese su primer Nombre" %}</div>
+                        <div class="form-group pt-3">{% render_field userForm.last_name class="form-control" placeholder="Ingrese sus Apellidos" %}</div>
+                        <div class="form-group pt-3">{% render_field userForm.username class="form-control" placeholder="Ingrese su usuario" %}</div>
+                        <div class="form-group pt-3">{% render_field userForm.email class="form-control" placeholder="Ingrese su  Gmail" %}</div>
+                        <div class="form-group pt-3">{% render_field userForm.password class="form-control" placeholder="Ingrese su Contraseña" %}</div>
+                        <div class="form-group pt-3">
+                            {% render_field customerForm.dirreccion class="form-control" placeholder="Ingrese direccion" %}
+                        </div>
+                        <div class="form-group pt-3">
+                            <label>Si es personal</label>
+                            {% render_field userForm.is_staff  placeholder="Ingrese direccion" %}
+                        </div>
+                        <div class="pt-3 text-center">
+                            <input type="submit" name="" value="Crear" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

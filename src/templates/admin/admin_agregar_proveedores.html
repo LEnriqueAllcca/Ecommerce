@@ -1,0 +1,56 @@
+{% extends 'admin/admin_base.html' %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Proveedores</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tabla proveedores</li>
+            </ol>
+            <div class="row">
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Proveedores en el sistema
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+
+                        <!-- Security token -->
+                        {% csrf_token %}
+
+                            <div class="form-group pt-3">
+                                {% render_field form.nombre class="form-control" placeholder="Ingresar nombre" %}
+                            </div>
+
+                        <div class="form-group pt-3">
+                            {% render_field form.direccion class="form-control" placeholder="Ingresar direccion" %}
+                        </div>
+                        <div class="form-group pt-3">
+                            {% render_field form.correo class="form-control" placeholder="Ingresar correo" %}
+                        </div>
+                        <div class="form-group pt-3">
+                            {% render_field form.celular class="form-control" placeholder="Ingresar celular" %}
+                        </div>
+
+                        <div class="pt-3 text-center">
+                            <input type="submit" value="Agregar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

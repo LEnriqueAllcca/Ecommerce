@@ -1,0 +1,61 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Proveeodres</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tabla proveedores</li>
+            </ol>
+            <div class="row">
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Proveedores en el sistema
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Celular</th>
+                            <th scope="col">opcion</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in object_list %}
+                            <tr>
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.nombre }}</td>
+                            <td>{{ p.direccion }}</td>
+                            <td>{{ p.correo}}</td>
+                                <td>{{ p.celular}}</td>
+                            <td class="text-center"><a href="{% url 'admin_actualizar_proovedores' p.id %}"><i class="fas fa-sync"></i></a></td>
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}

@@ -1,0 +1,98 @@
+{% extends 'admin/admin_base.html' %}
+
+<!DOCTYPE html>
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Dashboard usuario</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Usuario registrados</li>
+            </ol>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    tabla de usuarios
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Ultimo Logeo</th>
+                            <th scope="col">SuperUsuario</th>
+
+                            <th scope="col">Primer nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Personal</th>
+                            <th scope="col">Activo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in usuarios %}
+                            <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username }}</td>
+                            <td>{{ u.last_login }}</td>
+                            <td>{{ u.is_superuser}}</td>
+                            <td>{{ u.first_name }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.is_staff }}</td>
+                            <td>{{ u.is_active }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    tabla de usuarios Administradores
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple2">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Ultimo Logeo</th>
+                            <th scope="col">SuperUsuario</th>
+
+                            <th scope="col">Primer nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Personal</th>
+                            <th scope="col">Activo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in usuariosadmin %}
+                            <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username }}</td>
+                            <td>{{ u.dia_creacion }}</td>
+                            <td>{{ u.is_staff}}</td>
+                             <td>{{ u.first_name }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.is_active }}</td>
+                            <td><a class="btn btn-outline-primary text-center"></a></td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+{% endblock content %}
