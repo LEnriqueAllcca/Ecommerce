@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -63,7 +64,7 @@
                             {% render_field form.secondary_categories class="form-control" placeholder="Ingresar Imagen" %}
                         </div>
                         <div class="pt-3 text-center">
-                            <input type="submit" value="Agregar" class="btn btn-primary">
+                            <input type="submit" value="Actualizar" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
@@ -72,4 +73,5 @@
     </main>
     </body>
     </html>
+{% endif %}
 {% endblock content %}

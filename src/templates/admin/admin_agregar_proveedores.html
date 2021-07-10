@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,7 +22,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Proveedores en el sistema
+                    Agregar Proveedor
                 </div>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
@@ -29,18 +30,22 @@
                         <!-- Security token -->
                         {% csrf_token %}
 
-                            <div class="form-group pt-3">
-                                {% render_field form.nombre class="form-control" placeholder="Ingresar nombre" %}
-                            </div>
+                        <div class="form-group pt-3">
+                            <label>Nombre del proveedor</label>
+                            {% render_field form.nombre class="form-control" placeholder="Ingresar nombre" %}
+                        </div>
 
                         <div class="form-group pt-3">
+                            <label>Dirección del proveedor</label>
                             {% render_field form.direccion class="form-control" placeholder="Ingresar direccion" %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.correo class="form-control" placeholder="Ingresar correo" %}
+                            <label>Correo del proveedor</label>
+                            {% render_field form.correo class="form-control" type="email" placeholder="Ingresar correo" %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.celular class="form-control" placeholder="Ingresar celular" %}
+                            <label>Celular del proveedor</label>
+                            {% render_field form.celular class="form-control" type="number" placeholder="Ingresar celular" %}
                         </div>
 
                         <div class="pt-3 text-center">
@@ -53,4 +58,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

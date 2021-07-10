@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -18,7 +19,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Pagos realizados realizadas
+                    Pagos realizados
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -27,10 +28,10 @@
                             <th scope="col">ID</th>
                             <th scope="col">Orden</th>
                             <th scope="col">Método de Pago</th>
-                            <th scope="col">marca de tiempo</th>
+                            <th scope="col">Fecha de la compra</th>
                             <th scope="col">Exitoso</th>
-                            <th scope="col">monto</th>
-                            <th scope="col">respuesta cruda</th>
+                            <th scope="col">Monto</th>
+
 
                         </tr>
                         </thead>
@@ -39,11 +40,17 @@
                             <tr>
                                 <td>{{ p.id }}</td>
                                 <td> {{ p.order }}</td>
-                                <td> {{ p.payment_method }}</td>
+                                <td class="text-center"> {{ p.payment_method }}</td>
                                 <td>{{ p.timestamp }}</td>
-                                <td>{{ p.succesful }}</td>
+                                <td class="text-center">{% if  p.succesful  == True %}
+                                    <i class="fas fa-check"></i>  Pago exitoso
+                                    {%elif  p.succesful  == False %}
+                                      No se pago
+                                {%  endif %}
+
+                                </td>
                             <td>{{ p.amount  }}</td>
-                            <td>{{ p.raw_response }}</td>
+
                             </tr>
                         {% endfor %}
 
@@ -55,4 +62,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

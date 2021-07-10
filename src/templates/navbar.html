@@ -6,7 +6,7 @@
             <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
             <li><a href="{% url 'contact' %}">Contactos</a></li>
             {% if request.user.is_staff %}
-                <li><a href="/">Admin</a></li>
+                <li><a href="{% url 'admin' %}">Admin</a></li>
             {% endif %}
         </ul>
     </div>

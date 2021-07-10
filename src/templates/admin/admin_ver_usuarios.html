@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -10,9 +11,9 @@
     <body>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard usuario</h1>
+            <h1 class="mt-4">Usuarios</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Usuario registrados</li>
+                <li class="breadcrumb-item active">Usuarios registrados</li>
             </ol>
 
             <div class="card mb-4">
@@ -25,27 +26,40 @@
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Ultimo Logeo</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Último Logeo</th>
                             <th scope="col">SuperUsuario</th>
-
-                            <th scope="col">Primer nombre</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Personal</th>
+                            <th scope="col">Correo Electrónico</th>
+                            <th scope="col">Empleado</th>
                             <th scope="col">Activo</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for u in usuarios %}
                             <tr>
-                            <td>{{ u.id }}</td>
-                            <td>{{ u.username }}</td>
-                            <td>{{ u.last_login }}</td>
-                            <td>{{ u.is_superuser}}</td>
-                            <td>{{ u.first_name }}</td>
-                            <td>{{ u.email }}</td>
-                            <td>{{ u.is_staff }}</td>
-                            <td>{{ u.is_active }}</td>
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.username }}</td>
+                                <td>{{ u.last_login }}</td>
+                                <td>{% if  u.is_superuser  == True %}
+                                    Si es SuperUsuario
+                                {% elif u.is_superuser == False %}
+                                    No es SuperUsuario
+                                {% endif %}
+                                </td>
+                                <td>{{ u.email }}</td>
+                                <td>{% if  u.is_staff  == True %}
+                                    Si es Empleado
+                                {% elif  u.is_staff  == False %}
+                                    No es Empleado
+                                {% endif %}
+                                </td>
+                                <td>{% if  u.is_active  == True %}
+                                    <p>Si es activo</p>
+                                {% elif  u.is_active  == False %}
+                                    <p>No es activo</p>
+                                {% endif %}
+                                </td>
+
                             </tr>
                         {% endfor %}
 
@@ -53,37 +67,56 @@
                     </table>
                 </div>
             </div>
-        <div class="card mb-4">
+            <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    tabla de usuarios Administradores
+                    Tabla de usuarios administradores
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple2">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Ultimo Logeo</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Último Logeo</th>
                             <th scope="col">SuperUsuario</th>
 
-                            <th scope="col">Primer nombre</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Personal</th>
+                            <th scope="col">Empleado</th>
                             <th scope="col">Activo</th>
+                            <th scope="col">Opción</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for u in usuariosadmin %}
                             <tr>
-                            <td>{{ u.id }}</td>
-                            <td>{{ u.username }}</td>
-                            <td>{{ u.dia_creacion }}</td>
-                            <td>{{ u.is_staff}}</td>
-                             <td>{{ u.first_name }}</td>
-                            <td>{{ u.email }}</td>
-                            <td>{{ u.is_active }}</td>
-                            <td><a class="btn btn-outline-primary text-center"></a></td>
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.username }}</td>
+                                <td>{{ u.dia_creacion }}</td>
+                                <td>{% if  u.is_superuser  == True %}
+                                    Si es SuperUsuario
+                                {% elif u.is_superuser == False %}
+                                    No es SuperUsuario
+                                {% endif %}
+                                </td>
+
+                                <td>{{ u.email }}</td>
+                                <td>{% if  u.is_staff  == True %}
+                                    <p>si es Empleado</p>
+                                {% elif u.is_staff  == False %}
+                                    <p>No es Empleado</p>
+                                {% endif %}
+
+                                </td>
+                                <td>{% if  u.is_active  == True %}
+                                    <p>Si es activo</p>
+                                {% elif  u.is_active  == False %}
+                                    <p>No es activo</p>
+                                {% endif %}
+                                </td>
+                                <td><a class="btn btn-outline-primary"
+                                       href="{% url 'admin_actualizar_administradores' u.id %}"><i
+                                        class="fas fa-sync"></i></a></td>
                             </tr>
                         {% endfor %}
 
@@ -95,4 +128,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

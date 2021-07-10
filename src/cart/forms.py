@@ -1,5 +1,5 @@
 from django import forms
-from .models import OrderItem, Product, Address, Proveedores, Administrador
+from .models import OrderItem, Product, Address, Proveedores, Administrador, Category
 from django.contrib.auth import get_user_model
 
 from django.forms import ModelForm
@@ -112,3 +112,17 @@ class CustomerForm(forms.ModelForm):
     class Meta:
         model = Administrador
         fields = ['dirreccion']
+
+
+class CategoriaForm(ModelForm):
+   class Meta:
+       model = Category
+       fields = "__all__"
+       help_texts = {
+           'name': 'Por favor ingrese una categoria en texto',
+
+       }
+       labels = {
+           'name': 'Categoria',
+
+       }

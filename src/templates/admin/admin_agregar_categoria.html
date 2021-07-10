@@ -1,0 +1,49 @@
+{% extends 'admin/admin_base.html' %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+{% block content %}
+{% if request.user.is_staff %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Categoría</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tabla categoría</li>
+            </ol>
+            <div class="row">
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Agregar Categoria
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+
+                        <!-- Security token -->
+                        {% csrf_token %}
+
+                            <div class="form-group pt-3">
+                                <label>Nombre</label>
+                                {% render_field form.name class="form-control" placeholder="Ingresar nombre de la categoría" %}
+                            </div>
+
+                        <div class="pt-3 text-center">
+                            <input type="submit" value="Agregar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+    </html>
+    {% endif %}
+{% endblock content %}

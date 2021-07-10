@@ -40,7 +40,14 @@ urlpatterns = [
          name='admin_ver_usuarios'),
     path('admin_registrar_usuarios/', view_admin.administrador_signup_view , 
          name='admin_registrar_usuarios'),
-     
+    path('admin_actualizar_administradores/<int:pk>', view_admin.admin_acutalizar_administradores,
+         name='admin_actualizar_administradores'),
+     path('admin_ver_categorias/', view_admin.Admin_ver_categorias.as_view(), name='admin_ver_categorias'),
+     path('admin_añadir_categorias/', view_admin.Admin_Agregar_categorias.as_view(), name='admin_agregar_categorias'),
+     path('admin_actualizar_categorias/<int:pk>/', view_admin.Actualizar_categoria.as_view(),
+     name='admin_actualizar_categorias'),
+     path('admin_eliminar_categorias/<int:pk>/', view_admin.Eliminar_categoria.as_view(),
+     name='admin_eliminar_categorias'),
 ]
 
 if settings.DEBUG:

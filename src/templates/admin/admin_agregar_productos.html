@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,7 +22,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Productos en el sistema
+                    Agregar Producto
                 </div>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
@@ -30,37 +31,45 @@
                         {% csrf_token %}
 
                             <div class="form-group pt-3">
-                                {% render_field form.title class="form-control" placeholder="Ingresar Titulo" %}
+                                <label>Nombre del producto</label>
+                                {% render_field form.title class="form-control" placeholder="Ingresar nombre del producto" %}
                             </div>
 
                         <div class="form-group pt-3">
-                            {% render_field form.slug class="form-control" placeholder="Ingresar slug" %}
+                            <label>Código del producto</label>
+                            {% render_field form.slug class="form-control" placeholder="Ingresar código" %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.image class="form-control" placeholder="Ingresar Precio" %}
+                            <label>Subir Imagen</label>
+                            {% render_field form.image class="form-control" %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.description class="form-control" placeholder="Ingresar descripcion" %}
+                            <label>Descripción del producto</label>
+                            {% render_field form.description class="form-control" placeholder="Ingresar descripción" %}
                         </div>
                         <div class="form-group pt-3">
+                            <label>Precio del producto</label>
                             {% render_field form.price class="form-control" placeholder="Ingresar precio" %}
                         </div>
-
+                        <div class="form-group pt-3">
+                            <label>Cantidad</label>
+                            {% render_field form.stock class="form-control"  %}
+                        </div>
                         <div class="form-group pt-3">
                             <label>Activar/Desactivar</label>
-                            {% render_field form.active  placeholder="Ingresar Imagen" %}
+                            {% render_field form.active  %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.primary_category class="form-control" placeholder="Ingresar Imagen" %}
+                            <label>Categoría</label>
+                            {% render_field form.primary_category class="form-control"  %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.proveedor class="form-control" placeholder="Ingresar proveedor" %}
+                            <label>Proveedor</label>
+                            {% render_field form.proveedor class="form-control" %}
                         </div>
                         <div class="form-group pt-3">
-                            {% render_field form.stock class="form-control" placeholder="Ingresar Imagen" %}
-                        </div>
-                        <div class="form-group pt-3">
-                            {% render_field form.secondary_categories class="form-control" placeholder="Ingresar Imagen" %}
+                            <label>Otras Categorias</label>
+                            {% render_field form.secondary_categories class="form-control" %}
                         </div>
                         <div class="pt-3 text-center">
                             <input type="submit" value="Agregar" class="btn btn-primary">
@@ -72,4 +81,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

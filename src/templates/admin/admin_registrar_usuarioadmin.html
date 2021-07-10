@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -39,4 +40,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

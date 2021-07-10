@@ -4,11 +4,11 @@
 {% load i18n %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}{% trans "Iniciar_Sesión" %}{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h1>{% trans "Iniciar Sesión" %}</h1>
+  <h1 class="text-black">{% trans "Iniciar Sesión" %}</h1>
 
   {% get_providers as socialaccount_providers %}
 
@@ -46,4 +46,5 @@
     
   </form>
 </div>
+<br><br>
 {% endblock %}

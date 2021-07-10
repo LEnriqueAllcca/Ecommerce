@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -30,12 +31,11 @@
                             <th scope="col">ID</th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Imagen</th>
-                            <th scope="col">slug</th>
-                            <th scope="col">Descripcion</th>
+                            <th scope="col">Código</th>
+                            <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Creación</th>
                             <th scope="col">Actualización</th>
-                            <th scope="col">Activación</th>
                             <th scope="col">Stock</th>
                             <th scope="col">opción</th>
                         </tr>
@@ -49,10 +49,9 @@
                                          width="60px"></td>
                                 <td>{{ p.slug }}</td>
                                 <td>{{ p.description }}</td>
-                                <td>{{ p.price }}</td>
+                                <td>S/. {{ p.get_price }}</td>
                                 <td>{{ p.created }}</td>
                                 <td>{{ p.update }}</td>
-                                <td>{{ p.active }}</td>
                                 <td>{{ p.stock }}</td>
 
                                 <td><a class="btn btn-outline-primary" href="{% url 'admin_actualizar_productos' p.id %}"><i
@@ -72,4 +71,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

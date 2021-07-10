@@ -11,9 +11,9 @@
     <body>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Proveedores</h1>
+            <h1 class="mt-4">Categoría</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Tabla proveedores</li>
+                <li class="breadcrumb-item active">Tabla categorías</li>
             </ol>
             <div class="row">
 
@@ -22,30 +22,28 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Proveedores en el sistema
+                    Categorias en el sistema
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Dirección</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Celular</th>
-                            <th scope="col">Opción</th>
-
+                            <th scope="col">nombre</th>
+                            <th scope="col">opción</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for p in object_list %}
                             <tr>
-                            <td>{{ p.id }}</td>
-                            <td>{{ p.nombre }}</td>
-                            <td>{{ p.direccion }}</td>
-                            <td>{{ p.correo}}</td>
-                                <td>{{ p.celular}}</td>
-                            <td class="text-center"><a href="{% url 'admin_actualizar_proovedores' p.id %}"><i class="fas fa-sync"></i></a></td>
+                                <td>{{ p.id }}</td>
+                                <td>{{ p.name }}</td>
+
+
+                                <td><a class="btn btn-outline-primary" href="{% url 'admin_actualizar_categorias' p.id %}"><i
+                                        class="fas fa-sync"></i></a>
+                                    <a href="{% url 'admin_eliminar_categorias' p.id %}" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></a>
+                                </td>
 
 
                             </tr>

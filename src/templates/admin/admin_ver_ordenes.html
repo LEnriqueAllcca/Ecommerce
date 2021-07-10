@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 {% block content %}
+{% if request.user.is_staff %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -10,29 +11,29 @@
     <body>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard</h1>
+            <h1 class="mt-4">Ventas</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">ventas</li>
             </ol>
 
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Ordenes realizadas
+                    Lista de órdenes
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
+
                             <th scope="col">ID orden</th>
-                            <th scope="col">fecha Creacion</th>
+                            <th scope="col">Fecha creacion</th>
                             <th scope="col">Cliente</th>
-                            <th scope="col">Dirección de envio</th>
+                            <th scope="col">Dirección de envío</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Producto</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Imagen</th>
-                            <th scope="col">Estado</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,23 +41,28 @@
                             <tr>
 
                                 {% for c in customer %}
-                                    <td>{{ order.id }}</td>
+
                                     <td> {{ c.id }}</td>
                                     <td> {{ c.start_date }}</td>
                                     <td>{{ c.get_name }}</td>
-                                    <td>{{ c.get_direccion }}</td>
-
+                                    <td>{{ c.shipping_address }}</td>
+                                    <td>{% if c.ordered == True %}
+                                        confirmado
+                                    {% elif c.ordered == False %}
+                                        en proceso
+                                    {% endif %}
+                                    </td>
 
                                 {% endfor %}
                                 {% for p in product %}
                                     <td> {{ p.title }}</td>
                                     <td> {{ p.get_price }}</td>
                                     <td>
-                                        <img src="{{ p.image.url }}" class="img-fluid"  height="60px"
+                                        <img src="{{ p.image.url }}" class="img-fluid" height="60px"
                                              width="60px"></a>
-                                        </td>
-                                    <td> Opcion</td>
+                                    </td>
                                 {% endfor %}
+                                <td></td>
                             </tr>
                         {% endfor %}
 
@@ -68,4 +74,5 @@
     </main>
     </body>
     </html>
+    {% endif %}
 {% endblock content %}

@@ -11,7 +11,7 @@
     <body>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4 text-center">Eliminar Producto</h1>
+            <h1 class="mt-4 text-center">Eliminar Categoria</h1>
 
 
             <div class="card mb-4">
@@ -19,7 +19,7 @@
                 <div class="card-body">
 
                     <form method="post">{% csrf_token %}
-                        <p>¿Estas seguro que deseas eliminar este producto "{{ object }}"?</p>
+                        <p>¿Estas seguro que deseas eliminar esta categoría "{{ object }}"?</p>
                         <input type="submit" value="Confirmar" class="btn btn-danger">
                     </form>
 

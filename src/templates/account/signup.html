@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container">
-<h1>{% trans "Registrarse" %}</h1>
+<h1 class="text-black">{% trans "Registrarse" %}</h1>
 
 <p>{% blocktrans %}¿Ya tienes una cuenta? Entonces por favor <a href="{{ login_url }}">Inicie Sesión</a>.{% endblocktrans %}</p>
 
@@ -20,4 +20,5 @@
   <button type="submit" class="btn btn-primary">{% trans "Registrar Cuenta" %} &raquo;</button>
 </form>
 </div>
+<br><br>
 {% endblock %}

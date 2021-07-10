@@ -2,13 +2,13 @@ from django import forms
 
 class ContactForm(forms.Form):
     nombre = forms.CharField(max_length=100, widget=forms.TextInput(attrs={
-        'placeholder': "Tu Nombre"
+        'placeholder': "Tu nombre"
     }))
     apellidos= forms.CharField(max_length=100, widget=forms.TextInput(attrs={
-        'placeholder': "Tus Apellidos"
+        'placeholder': "Tus apellidos"
     }))
     correo_electronico = forms.EmailField(widget=forms.EmailInput(attrs={
-        'placeholder': "Tu Correo Electrónico"
+        'placeholder': "Tu correo electrónico"
     }))
     celular = forms.IntegerField(widget=forms.NumberInput(attrs={
         'placeholder': "Tu número de celular",'min': "0"
